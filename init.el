@@ -30,6 +30,9 @@
   (setq yas-snippet-dirs '("~/.emacs.d/yasnippets"))
   (yas-global-mode 1))
 
+(use-package hasklig-mode
+  :ensure t)
+
 ;; change backup directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
