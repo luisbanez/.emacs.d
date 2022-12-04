@@ -42,11 +42,27 @@
 (use-package disable-mouse
   :ensure t)
 
+(use-package go-mode
+  :ensure t)
+
+(use-package csharp-mode
+  :ensure t)
+
+(use-package sql-indent
+  :ensure t)
+
+;;sql-indent mode
+(eval-after-load "sql"
+  '(load-library "sql-indent"))
+
 ;; disable mouse
 (disable-mouse-global-mode)
 
 ;; always refresh buffers when files have changed on disk
 (global-auto-revert-mode t)
+
+;; initial buffer
+(setq initial-buffer-choice "~/.emacs.d/init.el")
 
 ;; change backup directory
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
@@ -62,7 +78,8 @@
 ;; treemacs
 (setq treemacs-text-scale -1)
 (setq treemacs-width 25)
-(setq treemacs-python-executable "C:/Program Files/Python310/python.exe")
+(setq treemacs-python-executable "C:/Users/ACER/AppData/Local/Programs/Python/Python311/python.exe")
+(add-hook 'after-init-hook 'treemacs)
 
 ;; remove annoying bell soundevl
 (setq ring-bell-function 'ignore)
@@ -95,6 +112,7 @@
     (c-offsets-alist . ((case-label +)
                         (statement-cont -)
                         (arglist-close 0)
+                        (inline-open 0)
                         ))))
 (c-add-style "my-cc-style" my-cc-style)
   
