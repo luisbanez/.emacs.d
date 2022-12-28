@@ -1,4 +1,4 @@
-;; connect to package repositories
+ ;; connect to package repositories
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -12,6 +12,9 @@
   (setq use-package-always-ensure t
         use-package-expand-minimally t))
 
+(use-package sublime-themes
+  :ensure t)
+
 (use-package doom-themes
   :ensure t)
 
@@ -24,10 +27,25 @@
 (use-package klere-theme
   :ensure t)
 
+(use-package catppuccin-theme
+  :ensure t)
+
+(use-package badwolf-theme
+  :ensure t)
+
+(use-package snazzy-theme
+  :ensure t)
+
 (use-package treemacs
   :ensure t)
 
 (use-package rust-mode
+  :ensure t)
+
+(use-package haskell-mode
+  :ensure t)
+
+(use-package fsharp-mode
   :ensure t)
 
 (use-package yasnippet
@@ -73,7 +91,7 @@
 (tool-bar-mode -1)
 
 ;; line numbers
-(global-linum-mode 1)
+(global-display-line-numbers-mode 1)
 
 ;; treemacs
 (setq treemacs-text-scale -1)
@@ -93,13 +111,12 @@
 ;; load theme
 (dolist (theme custom-enabled-themes)
   (disable-theme theme))
-  (load-theme 'doom-gruvbox t)
-;; (set-cursor-color "#ebdbb2")
+  (load-theme 'base16-classic-dark t)
 
 ;; set font
 (set-face-attribute 'default nil
-                    :family "Hasklig Medium"
-                    :height 90
+                    :family "Jetbrains Mono"
+                    :height 100
                     :weight 'normal
                     :width 'normal)
 
@@ -126,21 +143,10 @@
 
 ;; clarity
 (global-hl-line-mode 1)
-
+ 
 ;; enable windmove
 (windmove-default-keybindings)
-  
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("9cd57dd6d61cdf4f6aef3102c4cc2cfc04f5884d4f40b2c90a866c9b6267f2b3" "4fda8201465755b403a33e385cf0f75eeec31ca8893199266a6aeccb4adedfa4" "251ed7ecd97af314cd77b07359a09da12dcd97be35e3ab761d4a92d8d8cf9a71" "f053f92735d6d238461da8512b9c071a5ce3b9d972501f7a5e6682a90bf29725" "9d29a302302cce971d988eb51bd17c1d2be6cd68305710446f658958c0640f68" "11cc65061e0a5410d6489af42f1d0f0478dbd181a9660f81a692ddc5f948bf34" "adaf421037f4ae6725aa9f5654a2ed49e2cd2765f71e19a7d26a454491b486eb" "2853dd90f0d49439ebd582a8cbb82b9b3c2a02593483341b257f88add195ad76" "e266d44fa3b75406394b979a3addc9b7f202348099cfde69e74ee6432f781336" "da75eceab6bea9298e04ce5b4b07349f8c02da305734f7c0c8c6af7b5eaa9738" "d9a28a009cda74d1d53b1fbd050f31af7a1a105aa2d53738e9aa2515908cac4c" "249e100de137f516d56bcf2e98c1e3f9e1e8a6dce50726c974fa6838fbfcec6b" "5a00018936fa1df1cd9d54bee02c8a64eafac941453ab48394e2ec2c498b834a" "2ce76d65a813fae8cfee5c207f46f2a256bac69dacbb096051a7a8651aa252b0" "e8567ee21a39c68dbf20e40d29a0f6c1c05681935a41e206f142ab83126153ca" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" default))
- '(package-selected-packages
-   '(disable-mouse hasklig-mode yasnippet use-package treemacs rust-mode kaolin-themes doom-themes)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work 
+
+;; custom keybinds
+(bind-key* "C-f" 'replace-string)
+(bind-key* "C-M-z" 'string-rectangle)
